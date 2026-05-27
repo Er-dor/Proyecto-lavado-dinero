@@ -1,2 +1,3 @@
-> uso de sql en el caso de cuentas en especifico 
+> uso de sql en el caso de cuentas en especifico
+
 Al analizar la cuenta 100428660, se identificó un volumen inusualmente alto de transacciones, predominantemente en dólares (USD). Al segmentar esta actividad, se observó una fuerte dispersión de fondos hacia múltiples entidades bancarias distintas. Este patrón de comportamiento representa una señal de alto riesgo, ya que es un claro indicio de la tipología de lavado de dinero conocida como layering (estratificación), la cual busca ocultar el origen y el rastro de los fondos mediante múltiples transferencias interbancarias
