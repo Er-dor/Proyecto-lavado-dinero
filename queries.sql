@@ -98,14 +98,14 @@ from  proyectoalm.transf as tf
 where payment_currency != "US Dollar"
 group by tf.from_account
 order by ctr desc
---Buscando algo con que contrastar ¿El uso de dollar como metodo de transacciones es mayoritario respecto a las otras monedad?
+-- ¿El uso de dollar como metodo de transacciones es mayoritario respecto a las otras monedad?
 select from_account, count(*) as ctr
 from  proyectoalm.transf as tf
 where payment_currency = "US Dollar"
 group by tf.from_account
 order by ctr desc
 
-Agrupar respecto a usuario
+--Los usuarios con mas transacciones ¿cuáles son los bancos con mas apariciones? 
 select tf.from_account as Act, tf1.bank_name,  count(*) as aparicion 
 from  proyectoalm.transf as tf
 left join proyectoalm.banks as tf1 on tf.to_bank = tf1.bank_id 
@@ -113,13 +113,13 @@ where tf.from_account = '100428660'
 group by tf1.bank_name 
 order by aparicion desc
 
-Visualización de transacciones por hora 
+--Visualización de transacciones por hora 
 SELECT hour(tg.time_tran)  as hora, count(*) as cuantas 
  FROM proyectoalm.transf as tg
  group by hour(tg.time_tran)
  order by hora ;
 
-Visualización en hora 12:00 am y 14:00 pm
+--Visualización en hora 12:00 am y 14:00 pm
 SELECT HOUR(time_tran) as hora, payment_currency, COUNT(*) as cuantas
 FROM proyectoalm.transf
 WHERE HOUR(time_tran) = 0 (14)
