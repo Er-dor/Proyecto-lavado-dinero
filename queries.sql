@@ -55,7 +55,7 @@ FROM proyectoalm.accounts;
 --Eliminicación de duplicados
 CREATE TABLE proyectoalm.Tabla_Temp AS SELECT DISTINCT * FROM proyectoalm.banks;
 TRUNCATE TABLE proyectoalm.banks;
-INSERT INTO proyectoalm.banks SELECT * FROM proyectoalm.accounts;
+INSERT INTO proyectoalm.banks SELECT DISTINCT bank_name, bank_id FROM proyectoalm.accounts;
 DROP TABLE Tabla_Temp;
 
 --Revisión de duplicados en la tabla Banks
@@ -120,11 +120,13 @@ SELECT hour(tg.time_tran)  as hora, count(*) as cuantas
  order by hora ;
 
 --Visualización en hora 12:00 am y 14:00 pm
-SELECT HOUR(time_tran) as hora, payment_currency, COUNT(*) as cuantas
+SELECT payment_currency, 
+    COUNT(CASE WHEN HOUR(time_tran) = 0 THEN 1 END) as 'Transacciones 0:00', 
+    COUNT(CASE WHEN HOUR(time_tran) = 14 THEN 1 END) as 'Transacciones 14:00'
 FROM proyectoalm.transf
-WHERE HOUR(time_tran) = 0 (14)
+WHERE HOUR(time_tran) in (0, 14) 
 GROUP BY payment_currency
-ORDER BY cuantas DESC;
+ORDER BY `Transacciones 0:00` DESC, `Transacciones 14:00` DESC;
 
 
 -- Estadísticas generales de montos
