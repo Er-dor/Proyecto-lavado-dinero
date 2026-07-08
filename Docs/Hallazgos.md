@@ -4,6 +4,15 @@
 **Período:** Septiembre 2022  
 **Herramientas:** MySQL, Python, Power BI 
 
+## Contexto Dataset
+- Total de transacciones: 31,898,238 en 16 días se septiembre del 2022
+- Total de cuentas registradas: 2,087,238
+- Total de bancos registrados como únicos: 122,333
+- Numero de transacciones catalogadas fraudulentas (Laundering) 
+>No se tomo en cuenta para el análisis la columna de 'Is Laundering', unicamente para usó de validación.
+
+## Metología 
+
 ## Análisis de cuentas por sospecho de lavado de dinero
 
 - Al analizar la cuenta 100428660, se identificó un volumen inusualmente alto de transacciones, predominantemente en dólares (USD). Al segmentar esta actividad, se observó una fuerte dispersión de fondos hacia múltiples entidades bancarias distintas. Este patrón de comportamiento representa una señal de alto riesgo, ya que es un claro indicio de la tipología de lavado de dinero conocida como layering (estratificación), la cual busca ocultar el origen y el rastro de los fondos mediante múltiples transferencias interbancarias
@@ -12,7 +21,9 @@
 
 -En el caso del cliente 1004286F0 se identificó un comportamiento similar al cliente 1004286A8, teniendo múltiples transacciones bancarías. Al segmentar esta actividad, se observo que las entidades bancarias a las que se dispersaba los fondos bancarios pertenecian a entidades bancarias extranjeras distintas. Este patrón a comparación de los otros perfiles representa una señal de mayor riesgo, ya que  mezcla múltiples jurisdicciones siendo una tipología de lavado de dinero cross-border de fragmentación juridiccional.
 
-> Análisis Temporal
+
+>
+## Análisis Temporal
 
 Al segmentar transacciones unicamente por hora (formato de 24), se detectó una anomalía significativa: un pico inusual en la cantidad de transacciones a las 12:00 a.m. Se contrastó los horarios laborales de EE. UU., Europa y Asia para descartar la causa regional, manteniendo la distribución de transacciones pero no el volúmen. Al profundizar el análisis de la naturaleza de estas transacciones, se identificó que el pico de medianoche está dominado por movimientos de credit card y reinvestment, en lo contrario con el horario laboral USA y no laboral en Asia/Europ ( 2:00 p.m.) , donde predominan las operaciones con cheques.
 
