@@ -12,7 +12,18 @@
 >No se tomo en cuenta para el análisis la columna de 'Is Laundering', unicamente para usó de validación.
 
 ## Metología 
+Para el desarrollo del análisis de datos enfocado en prevención en lavado de dinero se usará el modelo CRISP-DM. Se usará el dataset IBM Anti-Money Laundering, el cual tiene una base de datos sintetica que emula transacciones bancarías tanto legitimas como ilegitimas, en las cuales se usan diferentes tipología de lavado. El proceso que se llevará a cabo siguiendo el modelo es el siguiente.
 
+   &emsp;1.-  Business understanding.
+    El problema con el surgimiento de nuevos bancos o SOFIPOs es la facilidad con la que se puede llevar a cabo el lavado de dinero. El objetivo principal es la captación de los principales metodos de lavado de              capital, así mismo la reducción de riesgos financieros y operativos, automatizando la detección disminuyendo los falsos positivos. El proyecto buscará detectar movimientos de riesgo en un ambiento "no controlado"        evitando el uso de la información extra (Columna del dataset 'Is laundering' y el archivo .txt que enlista las tipologías y cuentas involucradas en AML). El exito del proyecto es encontrar la mayor cantidad de cuentas involucradas, asi como la estructuración del modelo que prediga movimiento de alto riesgo.
+    &emsp;1.-  Data understanding.
+    
+
+
+
+
+
+  
 ## Análisis de cuentas por sospecho de lavado de dinero
 
 - Al analizar la cuenta 100428660, se identificó un volumen inusualmente alto de transacciones, predominantemente en dólares (USD). Al segmentar esta actividad, se observó una fuerte dispersión de fondos hacia múltiples entidades bancarias distintas. Este patrón de comportamiento representa una señal de alto riesgo, ya que es un claro indicio de la tipología de lavado de dinero conocida como layering (estratificación), la cual busca ocultar el origen y el rastro de los fondos mediante múltiples transferencias interbancarias
