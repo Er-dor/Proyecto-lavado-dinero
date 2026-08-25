@@ -40,7 +40,7 @@ Se diseñó un esquema relacional con tres tablas: `transf` (transacciones), `ac
 
 ## 🐍 Fase 2 — Análisis con Python (en curso)
 
-**Herramientas:** Python, Pandas, NumPy, Matplotlib/Seaborn.
+**Herramientas:** Python, Pandas, NumPy, Matplotlib/Seaborn, Polars.
 
 En esta fase el análisis migró de MySQL a Python, trabajando directamente con los CSV en DataFrames para mayor flexibilidad en la exploración.
 
@@ -67,7 +67,7 @@ En esta fase el análisis migró de MySQL a Python, trabajando directamente con 
 ## 🛠️ Stack técnico
 
 - **SQL:** MySQL Workbench (esquema relacional, cargas masivas, consultas de análisis)
-- **Python:** Pandas, NumPy, SQLAlchemy, Matplotlib/Seaborn
+- **Python:** Pandas, NumPy, SQLAlchemy, Matplotlib/Seaborn, Polars 
 - **Próximamente:** NetworkX, scikit-learn (K-Means, Isolation Forest, regresión logística)
 
 ## 📄 Documentación
