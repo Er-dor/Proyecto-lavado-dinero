@@ -6,7 +6,7 @@
 
 ## Contexto Dataset
 - Total de transacciones: 31,898,238 en 16 días se septiembre del 2022
-- Total de cuentas registradas: 2,087,238
+- Total de cuentas registradas: 2,087,786
 - Total de bancos registrados como únicos: 122,333
 - Numero de transacciones catalogadas fraudulentas (Laundering) 
 >No se tomo en cuenta para el análisis la columna de 'Is Laundering', unicamente para usó de validación.
@@ -16,9 +16,17 @@ Para el desarrollo del análisis de datos enfocado en prevención en lavado de d
 
    &emsp;1.-  Business understanding.
     El problema con el surgimiento de nuevos bancos o SOFIPOs es la facilidad con la que se puede llevar a cabo el lavado de dinero. El objetivo principal es la captación de los principales metodos de lavado de              capital, así mismo la reducción de riesgos financieros y operativos, automatizando la detección disminuyendo los falsos positivos. El proyecto buscará detectar movimientos de riesgo en un ambiento "no controlado"        evitando el uso de la información extra (Columna del dataset 'Is laundering' y el archivo .txt que enlista las tipologías y cuentas involucradas en AML). El exito del proyecto es encontrar la mayor cantidad de cuentas involucradas, asi como la estructuración del modelo que prediga movimiento de alto riesgo.
-    &emsp;1.-  Data understanding.
     
+   &emsp;2.-  Data understanding.
+    El dataset que se usó es IBM Anti-Money Laundering (HI-Medium), el cual tiene 31,898,238 datos de transacciones bancarias a lo largo de 16 días en septiembre del 2022 y 2,087,786 de cuentas registradas. La base de datos está dividida en 2 documentos csv, una llamada **Transactions** y **Accounts**.  
+   Los nombres de las columnas de la tabla Transactions son:  **Timestamp, From_Bank, From_Account, To_Bank,To_Account, Amount Received, Receiving Currency, Amount Paid, Payment Currency, Payment Format, Is Laundering.**   
+   Los nombres de las columnas de la tabla de Accounts son:  **Bank Name, Bank ID, Account Number, Entity ID, Entity Name.**   
+   La tabla de Transactions presento un problema con respecto a los nombres de las columnas, se tenían columnas con nombres duplicados "Account" y "Account.1" por lo cual se opto por intercambiarlo por un formato mas apto, "From_Account" y "To_Account", con el fin de evitar problemas de relación de variables.  
+   En la tabla de accounts se detectaron registros duplicados bajo la columna Account Number, ya que un mismo número de cuenta puede pertenecer a bancos distintos. Por ello se definió una llave primaria compuesta (bank_id + account_number).  
+   Adicionalmente, se identificó un subconjunto de transacciones con una discrepancia significativa entre Amount Received y Amount Paid que no se explica por diferencias de tipo de cambio entre divisas. Este patrón se documenta como anomalía estadística; su posible relación con técnicas de lavado se analiza en la sección de hallazgos correspondiente  
+   Durante la carga inicial de accounts se detectaron inconsistencias en la interpretación de tipos de dato (bank_id se registraba incorrectamente como 0), resuelto mediante carga controlada vía Python con tipado explícito.
 
+   &emsp;2.-  Data preparation.
 
 
 
